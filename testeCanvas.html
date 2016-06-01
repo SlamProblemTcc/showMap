@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <style>
+            canvas {
+                background: #ffffff;
+                cursor: pointer;
+                margin-left: 10px;
+                margin-top: 10px;
+                -webkit-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+                -moz-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+                box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id='myCanvas' width='2000' height='2000'>
+            Canvas not supported
+        </canvas>
+        <script>
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+
+            window.onload = function() {
+                /**
+                 * Função que retorna um grid
+                 */
+                function drawGrid(context, color, stepx, stepy) {
+                    context.beginPath();
+                    context.strokeStyle = color;
+                    context.lineWidth = 0.5;
+
+                    //  linhas verticais
+                    for (var i = stepx + 0.5; i < context.canvas.width; i += stepx) {
+                        context.moveTo(i, 0);
+                        context.lineTo(i, context.canvas.height);
+                        context.stroke();
+                    }
+
+                    //  linhas horizontais
+                    for (var i = stepy + 0.5; i < context.canvas.height; i += stepy) {
+                        context.moveTo(0, i);
+                        context.lineTo(context.canvas.width, i);
+                        context.stroke();
+                    }
+                }
+
+                  var tile1 = new Image();
+                  tile1.onload = function(){
+                    var i, j;           
+                    for(i=3; i>= 0; i--){
+                      for(j = 0; j <= 3; j++){    
+                        context.drawImage(tile1, (i+j)*tile1.width/2, (j-i)*tile1.height + (5*tile1.height/2) );
+                      }
+                    }         
+                  };
+                tile1.src = "tile.png";
+            }
+
+        </script>
+    </body>
+</html>
