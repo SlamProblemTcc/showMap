@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Mapa</title>
+        <script src="d3.js" charset="utf-8"></script>
         <style>
             canvas {
                 background: #ffffff;
@@ -13,50 +14,48 @@
                 box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
             }
         </style>
+    
     </head>
+    
     <body>
-        <canvas id='myCanvas' width='2000' height='2000'>
-            Canvas not supported
+        
+        <canvas id='myCanvas' width='1000' height='1000'>
         </canvas>
         <script>
+
             var canvas = document.getElementById('myCanvas');
             var context = canvas.getContext('2d');
 
             window.onload = function() {
-                /**
-                 * Função que retorna um grid
-                 */
-                function drawGrid(context, color, stepx, stepy) {
-                    context.beginPath();
-                    context.strokeStyle = color;
-                    context.lineWidth = 0.5;
-
-                    //  linhas verticais
-                    for (var i = stepx + 0.5; i < context.canvas.width; i += stepx) {
-                        context.moveTo(i, 0);
-                        context.lineTo(i, context.canvas.height);
-                        context.stroke();
-                    }
-
-                    //  linhas horizontais
-                    for (var i = stepy + 0.5; i < context.canvas.height; i += stepy) {
-                        context.moveTo(0, i);
-                        context.lineTo(context.canvas.width, i);
-                        context.stroke();
+                var i, j;           
+                context.fillStyle = '#B45F04';
+                
+                for(i=0; i<10; i++){
+                    for(j=0; j<10; j++){
+                       context.fillRect(i*100,j*100,99,99);
                     }
                 }
 
-                  var tile1 = new Image();
-                  tile1.onload = function(){
-                    var i, j;           
-                    for(i=3; i>= 0; i--){
-                      for(j = 0; j <= 3; j++){    
-                        context.drawImage(tile1, (i+j)*tile1.width/2, (j-i)*tile1.height + (5*tile1.height/2) );
-                      }
-                    }         
-                  };
-                tile1.src = "tile.png";
+                var nodes = [{x: 30, y: 50},
+                {x: 50, y: 80},
+                {x: 90, y: 120}]
+                
+                pointRobot(nodes[1].x, nodes[1].y, context);
+
+            };
+
+            function pointRobot(x, y, canvas){
+              canvas.beginPath();
+              var img = new Image();
+              img.onload = function(){
+                canvas.drawImage(img,10,10,70,40);
+                canvas.stroke();  
+              }
+              img.src = 'et.png';
+              
             }
+
+                
 
         </script>
     </body>
