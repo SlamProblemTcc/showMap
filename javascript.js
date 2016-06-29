@@ -23,8 +23,8 @@ function assembleObjects(data) {
   var posY = data.pontoY;
   for (var i = 0; i < posX.length; i++) {
     circlesPositionArray.push({
-      x: (width / 2) + posX[i]*10,
-      y: (height / 2) - posY[i]*10
+      x: (width / 2) + (posX[i])*10,
+      y: (height / 2) - (posY[i])*10
     })
   }
   console.log(circlesPositionArray);
@@ -39,6 +39,14 @@ function drawCircles() {
     .attr("width", width)
     .attr("height", height)
     .style("border", "1px solid black");
+  
+  d3.selectAll("svg")
+    .append("rect")
+    .attr("x", width/2-275)//fazendo com que o meio da caixa fique no lugar certo
+    .attr("y", height/2-225)//fazendo com que o meio da caixa fique no lugar certo
+    .attr("width", 550)
+    .attr("height", 450)
+    .attr("class", "box");
 
   for (var i = 0; i < circlesPositionArray.length; i++) {
     d3.selectAll("svg")

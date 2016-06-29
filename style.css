@@ -12,9 +12,15 @@ html, body {
     stroke-width: 1px;
     cursor: pointer;
 }
+.box {
+    fill: white;
+    stroke: steelblue;
+    stroke-width: 2px;
+    cursor: pointer;
+}
 .link {
-    stroke: #777;
-    stroke-width: 1px;
+    stroke: #21E22D;
+    stroke-width: 2px;
 }
 button {
     height: 2px;
