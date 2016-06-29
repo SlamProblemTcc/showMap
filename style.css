@@ -1,0 +1,27 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+#screen {
+    height: 480px;
+    width: 640px;
+}
+.dot {
+    fill: white;
+    stroke: steelblue;
+    stroke-width: 1px;
+    cursor: pointer;
+}
+.link {
+    stroke: #777;
+    stroke-width: 1px;
+}
+button {
+    height: 2px;
+    width: 50px;
+    background-color: red;
+}
+.link_cartesian {
+  stroke: rgba(0, 0, 0, 0.1);
+  stroke-width: 2px;
+}
